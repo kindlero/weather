@@ -8,47 +8,74 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Pangolin" rel="stylesheet">
+		<style>
+			h1
+			{
+				font-family: 'Pangolin',cursive;
+				font-size: 100 px;	
+			}
+			.date
+			{
+				font-family: 'Pangolin',cursive;
+				font-size: 30px;
+			}
+		</style>
 	</head>
 	<body>
-		<!--<div class="container">
-			<div class="jumbotron"></div>
-		</div>
-		<div class="container">
-			<img src="logo.jpg" class="img-fluid center-block" width="500" height="250" >
-		</div>
+		<script type="text/javascript">
+
+			function showTime(){
+				var mName = ['Jan','Feb','Mar','Apr','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+				var date = new Date();
+				var h = date.getHours(); // 0 - 23
+				var m = date.getMinutes(); // 0 - 59
+				var s = date.getSeconds(); // 0 - 59
+				var y = date.getFullYear();
+				var month = mName[date.getMonth()];
+				var d = date.getDate();
+				var session = "AM";
+				var hx="th";	if(d==1)hx="st";else if(d==2)hx="nd";else if(d==3)hx="rd";
+
+				if(h == 0){
+					h = 12;
+				}
+
+				if(h > 12){
+					h = h - 12;
+					session = "PM";
+				}
+
+				h = (h < 10) ? "0" + h : h;
+				m = (m < 10) ? "0" + m : m;
+				s = (s < 10) ? "0" + s : s;
+
+				var time = h + ":" + m  + " " + session;
+				var dateNow = d + hx + " "+ month +","+ y;
+				$("#clock").html(time);
+				$("#date").html(dateNow);
+				setTimeout(showTime, 1000);
+			}
+			showTime();
+
+		</script>
 		<div class="container">
 			<div class="jumbotron">
-				<h3 class="primary-text text-center">
-					<strong>12:45 PM</strong><br>
-				</h3>
-				<h4 class="muted-text text-center">
-					<strong>15th Feb, 2017.</strong>
-				</h4>
-			</div>
-		</div>-->
-		<div class="container">
-			<div class="jumbotron">
-				<img src="github-octocat.png" class="img-fluid center-block img-circle" width="250" height="250">
-			</div>
-		</div>
-		<div class="container">
-			<div class="jumbotron">
-				<h1 class="text-primary text-center" style="font-family: 'Pangolin', cursive">
+				<img src="logo.jpg" class="img-fluid center-block img-circle" width="200" height="200">
+				<h1 class="text-primary text-center" id="clock">
 					12:45 AM.
 				</h1>
-				<h3 class="text-center" style="font-family: 'Kaushan Script', cursive">
+				<h3 class="text-center date" id="date">
 					<strong>15th Feb, 2016.</strong>
 				</h3><hr>
-				<h3 class="text-center" style="font-family: 'Kaushan Script',cursive">
+				<h3 class="text-center quote" style="font-family: 'Kaushan Script',cursive">
 					Just do it.
-				</h3>
-			</div>
-			<div class="jumbotron">
-				<h3 class="text-center" style="font-family: 'Pangolin',cursive">
+				</h3><hr>
+				<h3 class="text-center weather" style="font-family: 'Pangolin',cursive">
 					25 Celsius, Rainy.
 				</h3>
 			</div>
 		</div>
+		
 
 	</body>
 </html>
